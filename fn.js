@@ -67,6 +67,10 @@ const fn = {
       }, 500);
     });
   },
+  createUser: (name) => {
+    console.log("실제 유저가 생성되었습니다.");
+    return name;
+  },
 };
 
 module.exports = fn;
