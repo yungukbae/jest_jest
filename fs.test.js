@@ -92,3 +92,53 @@ test("에러가 발생했나요", () => {
   //failed
   //   expect(() => fn.throwErr()).toThrow("oo");
 });
+
+//done이 호출되기 전까지 jest는 테스트를 끝내지 않음
+test("3초후 이름받아옴", (done) => {
+  const callback = (name) => {
+    try {
+      expect(name).toBe("mike");
+      done();
+    } catch (error) {
+      done();
+    }
+  };
+  fn.get(callback);
+});
+
+// test("3초후 에러 발생", (done) => {
+//   const callback = (name) => {
+//     try {
+//       expect(name).toBe("mike");
+//       done();
+//     } catch (error) {
+//       done();
+//     }
+//   };
+//   fn.error(callback);
+// });
+
+//Promise는 done이 필요없다 resolve가 날아올때까지 기다리기 때문에
+test("Promise 요청 대기", () => {
+  //Promise는 return을 필수로 해줘야 한다.
+  return fn.getAge().then((age) => {
+    expect(age).toBe(30);
+  });
+
+  //Matcher로도 가능하다
+  //   return expect(fn.getAge()).resolves.toBe(30);
+});
+
+//Promise Reject
+test("Promise Reject 테스트", () => {
+  return expect(fn.getReject()).rejects.toMatch("error");
+});
+
+//async await
+test("Promise 요청 대기", async () => {
+  //   const age = await fn.getAge();
+  //   expect(age).toBe(30);
+
+  //Matcher로도 가능하다
+  await expect(fn.getAge()).resolves.toBe(30);
+});
