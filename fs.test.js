@@ -142,3 +142,9 @@ test("Promise 요청 대기", async () => {
   //Matcher로도 가능하다
   await expect(fn.getAge()).resolves.toBe(30);
 });
+
+// only의 경우 해당 테스트만 테스트후 다른 테스트는 생략한다!!
+// test.only("0 + 4 = 4", () => {
+//   num = fn.add(num, 4);
+//   expect(num).toBe(4);
+// });

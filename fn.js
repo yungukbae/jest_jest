@@ -32,6 +32,41 @@ const fn = {
       }, 3000);
     });
   },
+  connectDB: () => {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res({
+          name: "mike",
+          age: 30,
+        });
+      }, 500);
+    });
+  },
+  disconnectDB: () => {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res();
+      }, 500);
+    });
+  },
+  connectCarDB: () => {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res({
+          brand: "bmw",
+          name: "z4",
+          color: "red",
+        });
+      }, 500);
+    });
+  },
+  disconnectCarDB: () => {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res();
+      }, 500);
+    });
+  },
 };
 
 module.exports = fn;
